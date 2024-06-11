@@ -244,7 +244,7 @@ def launch_server(server_args: ServerArgs, pipe_finish_writer, model_overide_arg
                     timeout=600,
                 )
                 assert res.status_code == 200
-        except Exception:
+        except Exception as e:
             if pipe_finish_writer is not None:
                 pipe_finish_writer.send(get_exception_traceback())
             print(f"Initialization failed. warmup error: {e}")
